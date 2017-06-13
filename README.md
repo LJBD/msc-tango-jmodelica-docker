@@ -2,11 +2,12 @@
 
 This repo contains a Dockerfile for a CentOS7-based Docker image with Tango and JModelica.org installed.
 
-## How do I get set up?
+## How do I set it up?
 
 ### Building
 
 Watch out, building takes time - around 30 minutes. But fortunately, you don't need to do that!
+If you're really convinced to do so, you must ensure that you have access to `ljbd/solaris-tango-centos` image from DockerHub.
 
 ### Running
 
@@ -15,7 +16,7 @@ You can run it with:
 docker run --name jmodelica_test -h tango_jmodelica -e TANGO_HOST=tango-dev.cps.uj.edu.pl:10000 ljbd/centos-tango-jmodelica:latest
 ```
 
-## What's inside
+## What's inside?
 The image is packed with Tango 9.2.5a, PyTango 9.2.1 as well as IPOPT 3.12.8 and the latest version of JModelica.org from SVN.
 It uses supervisor to run the following things:
 
