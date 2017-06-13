@@ -8,7 +8,7 @@ ENV DL=$HOME/Downloads WS=$HOME/work IPOPT_VER=3.12.8 PATH=/usr/bin:$PATH
 RUN yum --disablerepo=SOL* --disablerepo=max* install -y Cython subversion java \
 	zlib-devel lapack-devel blas-devel gcc-c++ gcc-gfortran cmake swig \
 	python2-jpype metis64-devel numpy-f2py wget patch make which ant scipy\
-&& JCC_JDK=/usr/lib/java-1.8.0-openjdk pip install jcc
+&& JCC_JDK=/usr/lib/jvm/java-1.8.0-openjdk pip install jcc
 
 # Install Ipopt
 RUN which wget && mkdir $DL $WS \
