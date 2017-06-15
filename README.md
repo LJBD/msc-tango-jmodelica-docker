@@ -11,9 +11,10 @@ If you're really convinced to do so, you must ensure that you have access to `lj
 
 ### Running
 
-You can run it with:
+You can run it with the following command, if you don't mind the X security:
 ```console
-docker run --name jmodelica_test -h tango_jmodelica -e TANGO_HOST=tango-dev.cps.uj.edu.pl:10000 ljbd/centos-tango-jmodelica:latest
+docker run --name jmodelica_test -h tango_jmodelica -e TANGO_HOST=tango-dev.cps.uj.edu.pl:10000 -e DISPLAY=$DISPLAY -e QT_X11_NO_MITSHM=1 -v /tmp/.X11-unix:/tmp/.X11-unix -v $PROJECTS/masthe-tango-ds-tanks-regulation/:$PROJECTS/masthe-tango-ds-tanks-regulation ljbd/centos-tango-jmodelica:0.4
+
 ```
 
 ## What's inside?
@@ -27,4 +28,5 @@ It uses supervisor to run the following things:
 
 The whole image was based on Michal Liszcz's [tango-cs-docker](https://github.com/tango-controls/tango-cs-docker).
 JModelica.org and IPOPT installation was taken from [Mechatronics3D](https://github.com/Mechatronics3D/) [jjmodelica](https://github.com/Mechatronics3D/jjmodelica) image.
+Transferring X-server to your own machine was taken from [cpascual](https://github.com/cpascual)'s [taurus-test](https://github.com/cpascual/taurus-test) image.
 Thanks very much, guys!
