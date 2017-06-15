@@ -26,12 +26,13 @@ RUN which wget && mkdir $DL $WS \
 RUN cd $DL && mkdir JModelica.org && svn co https://svn.jmodelica.org/trunk $DL/JModelica.org \
 && cd $DL/JModelica.org && mkdir build && cd build && \
     ../configure --prefix=$WS/JModelica.org --with-ipopt=$WS/Ipopt-${IPOPT_VER} && \
-    make install && make casadi_interface
+    make install && make casadi_interface && rm -rf $DL/JModelica.org
 
 # Define environment variables for JModelica
 ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk/
 ENV IPOPT_HOME=$WS/Ipopt-$IPOPT_VER
 ENV JMODELICA_HOME=$WS/JModelica.org
+ENV MODELICAPAT=$JMODELICA_HOME/ThirdParty/MSL
 ENV CPPAD_HOME=$JMODELICA_HOME/ThirdParty/CppAD/
 ENV SUNDIALS_HOME=$JMODELICA_HOME/ThirdParty/Sundials
 ENV PYTHONPATH=:$JMODELICA_HOME/Python::$PYTHONPATH
