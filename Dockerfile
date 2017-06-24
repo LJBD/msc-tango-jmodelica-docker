@@ -5,12 +5,13 @@ MAINTAINER Lukasz Dudek <ljbdudek@gmail.com>
 ENV DL=$HOME/Downloads
 ENV WS=$HOME/work 
 ENV IPOPT_VER=3.12.8
+ENV JAVA_VERSION=1.8.0
 
 # Install required packages
 RUN yum --disablerepo=SOL* --disablerepo=max* install -y Cython subversion java \
 	zlib-devel lapack-devel blas-devel gcc-c++ gcc-gfortran cmake swig boost-devel\
 	python2-jpype metis64-devel numpy-f2py wget patch make which ant scipy python-matplotlib\
-&& JCC_JDK=/usr/lib/jvm/java-1.8.0-openjdk pip install jcc
+&& JCC_JDK=/usr/lib/jvm/java-${JAVA_VERSION}-openjdk pip install jcc
 
 # Install Ipopt
 RUN which wget && mkdir $DL $WS \
@@ -29,7 +30,7 @@ RUN cd $DL && mkdir JModelica.org && svn co https://svn.jmodelica.org/trunk $DL/
     make install && make casadi_interface && rm -rf $DL/JModelica.org
 
 # Define environment variables for JModelica
-ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk/
+ENV JAVA_HOME=/usr/lib/jvm/java-${JAVA_VERSION}-openjdk/
 ENV IPOPT_HOME=$WS/Ipopt-$IPOPT_VER
 ENV JMODELICA_HOME=$WS/JModelica.org
 ENV MODELICAPAT=$JMODELICA_HOME/ThirdParty/MSL
