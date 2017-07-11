@@ -11,7 +11,7 @@ ENV JAVA_VERSION=1.8.0
 RUN yum --disablerepo=SOL* --disablerepo=max* install -y Cython subversion java \
 	zlib-devel lapack-devel blas-devel gcc-c++ gcc-gfortran cmake swig boost-devel\
 	python2-jpype metis64-devel numpy-f2py wget patch make which ant scipy python-matplotlib\
-&& JCC_JDK=/usr/lib/jvm/java-${JAVA_VERSION}-openjdk pip install jcc
+&& JCC_JDK=/usr/lib/jvm/java-${JAVA_VERSION}-openjdk pip install jcc control slycot
 
 # Install Ipopt
 RUN which wget && mkdir $DL $WS \
