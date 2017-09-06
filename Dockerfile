@@ -33,7 +33,7 @@ RUN cd $DL && mkdir JModelica.org && svn co https://svn.jmodelica.org/trunk $DL/
 ENV JAVA_HOME=/usr/lib/jvm/java-${JAVA_VERSION}-openjdk/
 ENV IPOPT_HOME=$WS/Ipopt-$IPOPT_VER
 ENV JMODELICA_HOME=$WS/JModelica.org
-ENV MODELICAPAT=$JMODELICA_HOME/ThirdParty/MSL
+ENV MODELICAPATH=$JMODELICA_HOME/ThirdParty/MSL
 ENV CPPAD_HOME=$JMODELICA_HOME/ThirdParty/CppAD/
 ENV SUNDIALS_HOME=$JMODELICA_HOME/ThirdParty/Sundials
 ENV PYTHONPATH=:$JMODELICA_HOME/Python::$PYTHONPATH
