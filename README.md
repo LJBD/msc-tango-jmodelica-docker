@@ -13,8 +13,11 @@ If you're really convinced to do so, you must ensure that you have access to `lj
 
 You can run it with the following command, if you don't mind the X security:
 ```console
-docker run --name jmodelica_test -h tango_jmodelica -e TANGO_HOST=tango-dev.cps.uj.edu.pl:10000 -e DISPLAY=$DISPLAY -e QT_X11_NO_MITSHM=1 -v /tmp/.X11-unix:/tmp/.X11-unix -v $PROJECTS/masthe-tango-ds-tanks-regulation/:$PROJECTS/masthe-tango-ds-tanks-regulation ljbd/centos-tango-jmodelica:0.4
-
+docker run --name jmodelica_test -h tango_jmodelica \
+    -e TANGO_HOST=localhost:10000 \
+    -e DISPLAY=$DISPLAY -e QT_X11_NO_MITSHM=1 -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -v $PROJECTS/masthe-tango-ds-tanks-regulation/:$PROJECTS/masthe-tango-ds-tanks-regulation \
+    ljbd/centos-tango-jmodelica:0.4
 ```
 
 ## What's inside?
